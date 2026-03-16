@@ -2,6 +2,17 @@
 title: "Assignment #1"
 format: html
 ---
+```{r}
+knitr::opts_knit$set(root.dir = normalizePath("../../"))
+```
+
+```{r}
+library(data.table)
+library(ggplot2)
+library(seqminer)
+library(HardyWeinberg)
+library(dplyr)
+```
 
 ## Assignment 1
 
@@ -19,92 +30,196 @@ Before fitting any models, it is essential to understand the data. Use R or bash
 
 (i) Read the .fam file. How many samples does the dataset contain?
 
-```         
-# Your answer here...
+```{r}         
+info = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.fam")
+N = nrow(info); N
+#4000
 ```
 
 (ii) What is the 'variable type' of the response variable (i.e.Continuous or binary)?
 
-```         
-# Your answer here...
+```{r}        
+#Continuous
 ```
 
 (iii) Read the .bim file. How many SNPs does the dataset contain?
 
-```         
-# Your answer here...
+```{r}        
+SNP = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.bim")
+M = nrow(SNP); M
+#101083
 ```
 
 #### Question 2: Allele Frequency Estimation
 
 (i) Load the genotype matrix for SNPs rs1861, rs3813199, rs3128342, and rs11804831 using additive coding. What are the allele frequencies (AFs) for these four SNPs?
 
-```         
-# Your code here...
+```{bash}   
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc --export A --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1
+```
+```{r}
+geno = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1.raw")
+```
+```{bash}
+printf "%s\n" rs1861 rs3813199 rs3128342 rs11804831 > C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc \
+       --freq \
+       --extract C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt \
+       --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive
+```  
+```{r}
+AF = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive.afreq")
+AF$major = pmax(AF$ALT_FREQS, 1 - AF$ALT_FREQS); head(AF$major)
+#0.9439874 0.8456590 0.6948790 0.9460141, in order
 ```
 
 (ii) What are the minor allele frequencies (MAFs) for these four SNPs?
 
-```         
-# Your code here...
+```{r}         
+head(AF$ALT_FREQS)
+#0.0569126  0.1543410  0.3051210  0.0539859, in order
 ```
 
 #### Question 3: Hardy–Weinberg Equilibrium (HWE) Test
 
 (i) Conduct the Hardy–Weinberg Equilibrium (HWE) test for all SNPs in the .bim file. Then, load the file containing the HWE p-value results and display the first few rows of the resulting data frame.
 
-```         
-# Your code here...
+```{bash}         
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc --hardy --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1
+```
+```{r}
+HWE = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1.hardy")
+head(HWE[, c("ID", "P")])
 ```
 
 (ii) What are the HWE p-values for SNPs rs1861, rs3813199, rs3128342, and rs11804831?
 
-```         
-# Your code here...
+```{r}      
+four_SNP = c("rs1861", "rs3813199", "rs3128342", "rs11804831")   
+four_pval = HWE[HWE$ID %in% four_SNP, c("ID", "P")]; four_pval
 ```
 
 #### Question 4: Genetic Association Test
 
 (i) Conduct a linear regression to test the association between SNP rs1861 and the phenotype. What is the p-value?
 
-```         
-# Your code here...
+```{bash}
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc \
+      --extract C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt \
+      --recode A \
+      --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/geno.additive_A1
+```
+```{r}
+geno_subset = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/geno.additive_A1.raw")
+geno_subset = na.omit(geno_subset)
+head(geno_subset)
+
+table(geno_subset$rs1861_C)
+AF[AF$ID=='rs1861',]
+
+lm1 = lm(PHENOTYPE ~ rs1861_C, data = geno_subset)
+summary(lm1)
+#0.791
 ```
 
 (ii) How would you interpret the beta coefficient from this regression?
 
-```         
-# Your answer here...
+```{r}        
+#With each allele containing the SNP, the occurrence of the phenotype is increased by 0.05483 (B1) units, as it is additive
+#B0 indicates the baseline expected phenotype, given that our SNP genotype is 0 (unaffected)
 ```
 
 (iii) Plot the scatterplot of phenotype versus the genotype of SNP rs1861. Add the regression line to the plot.
 
-```         
-# Your code here...
+```{r}         
+geno_range = data.frame(rs1861_C = seq(0, 2, length.out = 100))
+geno_range$predicted = predict(lm1, newdata = geno_range, type = "response")
+count_data = geno_subset %>%
+  mutate(PHENOTYPE = round(PHENOTYPE)) %>%  
+  filter(!is.na(rs1861_C), !is.na(PHENOTYPE)) %>%
+  group_by(rs1861_C, PHENOTYPE) %>%
+  summarise(count = n(), .groups = "drop")
+
+scatter = ggplot() +
+  geom_point(data = count_data,
+             aes(x = rs1861_C, y = PHENOTYPE, size = count),
+             color = "blue", alpha = 0.6
+             ) +
+  geom_line(data = geno_range,
+            aes(x = rs1861_C, y = predicted),
+            color = "red", 
+            linewidth = 1.5
+            ) +
+  scale_size_continuous(range = c(2, 8)) +
+  labs(
+    title = "Linear Regression: PHENOTYPE ~ rs1861 Genotype",
+    x = "Genotype (0/1/2)",
+    y = "Phenotype",
+    size = "Count"
+  ) +
+  coord_cartesian(xlim = c(-0.5, 2.5), ylim = range(geno_subset$PHENOTYPE, na.rm = TRUE)) + #Line was not showing, changed the ylim (https://ggplot2-book.org/coord.html)
+  theme_minimal()
+
+print(scatter)
 ```
 
 (iv) Convert the genotype coding for rs1861 to recessive coding.
 
-```         
-# Your code here...
+```{r}        
+geno_subset_rec = geno_subset
+geno_subset_rec[, 7:ncol(geno_subset_rec)] = as.data.frame(
+  lapply(geno_subset[, 7:ncol(geno_subset)], function(x) ifelse(x == 2, 1, 0))
+)
 ```
 
 (v) Conduct a linear regression to test the association between the recessive-coded rs1861 and the phenotype. What is the p-value?
 
-```         
-# Your code here...
+```{r}        
+lm2 = lm(PHENOTYPE ~ rs1861_C, data = geno_subset_rec)
+summary(lm2)
+#0.775
 ```
 
 (vi) Plot the scatterplot of phenotype versus the recessive-coded genotype of rs1861. Add the regression line to the plot.
 
-```         
-# Your code here...
+```{r}
+geno_range = data.frame(rs1861_C = seq(0, 2, length.out = 100))
+geno_range$predicted = predict(lm2, newdata = geno_range, type = "response")
+count_data = geno_subset_rec %>%
+  mutate(PHENOTYPE = round(PHENOTYPE)) %>%  
+  filter(!is.na(rs1861_C), !is.na(PHENOTYPE)) %>%
+  group_by(rs1861_C, PHENOTYPE) %>%
+  summarise(count = n(), .groups = "drop")
+
+scatter_rec = ggplot() +
+  geom_point(data = count_data,
+             aes(x = rs1861_C, y = PHENOTYPE, size = count),
+             color = "blue", alpha = 0.6
+             ) +
+  geom_line(data = geno_range,
+            aes(x = rs1861_C, y = predicted),
+            color = "red", 
+            linewidth = 1.5
+            ) +
+  scale_size_continuous(range = c(2, 8)) +
+  labs(
+    title = "Linear Regression: PHENOTYPE ~ rs1861 Genotype (Recessive)",
+    x = "Genotype (0/1)",
+    y = "Phenotype",
+    size = "Count"
+  ) +
+  coord_cartesian(xlim = c(-0.5, 2.5), ylim = range(geno_subset$PHENOTYPE, na.rm = TRUE)) + 
+  theme_minimal()
+
+print(scatter_rec)     
 ```
 
 (vii) Which model fits better? Justify your answer.
 
-```         
-# Your answer here...
+```{r}         
+AIC = AIC(lm1, lm2)
+print(AIC)
+#AIC values of both models are very close to each other. While the recessive model would fit better, due to having a lower AIC, the difference is not significant.
 ```
 
 ### Criteria
