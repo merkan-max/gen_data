@@ -203,30 +203,30 @@ Attaching package: 'dplyr'</code></pre>
 <li>Load the genotype matrix for SNPs rs1861, rs3813199, rs3128342, and rs11804831 using additive coding. What are the allele frequencies (AFs) for these four SNPs?</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc <span class="at">--export</span> A <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1 <span class="at">--export</span> A <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLINK v2.0.0-a.7 64-bit (10 Jan 2026)               cog-genomics.org/plink/2.0/
 (C) 2005-2026 Shaun Purcell, Christopher Chang    GNU General Public License v3
 Logging to C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1.log.
 Options in effect:
-  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc
+  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1
   --export A
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1
 
-Start time: Mon Mar 16 17:54:27 2026
+Start time: Wed Mar 18 17:54:12 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.fam.
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.fam.
 101083 variants loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.bim.
-1 binary phenotype loaded (3134 cases, 866 controls).
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.bim.
+1 quantitative phenotype loaded (4000 values).
 
 --export A pass 1/1: loading... 0%64% writing... 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99% done.
 --export A:
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1.raw
 written.
-End time: Mon Mar 16 17:54:28 2026</code></pre>
+End time: Wed Mar 18 17:54:14 2026</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -234,35 +234,35 @@ End time: Mon Mar 16 17:54:28 2026</code></pre>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">"%s\n"</span> rs1861 rs3813199 rs3128342 rs11804831 <span class="op">&gt;</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc <span class="dt">\</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1 <span class="dt">\</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">--freq</span> <span class="dt">\</span></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">--extract</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt <span class="dt">\</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLINK v2.0.0-a.7 64-bit (10 Jan 2026)               cog-genomics.org/plink/2.0/
 (C) 2005-2026 Shaun Purcell, Christopher Chang    GNU General Public License v3
 Logging to C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive.log.
 Options in effect:
-  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc
+  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1
   --extract C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt
   --freq
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive
 
-Start time: Mon Mar 16 17:54:36 2026
+Start time: Wed Mar 18 17:54:22 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.fam.
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.fam.
 101083 variants loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.bim.
-1 binary phenotype loaded (3134 cases, 866 controls).
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.bim.
+1 quantitative phenotype loaded (4000 values).
 --extract: 4 variants remaining.
 Calculating allele frequencies... 0%done.
 --freq: 0%25%50%75%
 --freq: Allele frequencies (founders only) written to
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive.afreq
 .
-End time: Mon Mar 16 17:54:36 2026</code></pre>
+End time: Wed Mar 18 17:54:22 2026</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -290,30 +290,30 @@ End time: Mon Mar 16 17:54:36 2026</code></pre>
 <li>Conduct the Hardy–Weinberg Equilibrium (HWE) test for all SNPs in the .bim file. Then, load the file containing the HWE p-value results and display the first few rows of the resulting data frame.</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc <span class="at">--hardy</span> <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1 <span class="at">--hardy</span> <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLINK v2.0.0-a.7 64-bit (10 Jan 2026)               cog-genomics.org/plink/2.0/
 (C) 2005-2026 Shaun Purcell, Christopher Chang    GNU General Public License v3
 Logging to C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1.log.
 Options in effect:
-  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc
+  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1
   --hardy
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1
 
-Start time: Mon Mar 16 17:54:36 2026
+Start time: Wed Mar 18 17:54:22 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.fam.
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.fam.
 101083 variants loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.bim.
-1 binary phenotype loaded (3134 cases, 866 controls).
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.bim.
+1 quantitative phenotype loaded (4000 values).
 Calculating allele frequencies... 0%64%done.
 --hardy: 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%
 --hardy: Autosomal Hardy-Weinberg report (founders only) written to
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1.hardy
 .
-End time: Mon Mar 16 17:54:37 2026</code></pre>
+End time: Wed Mar 18 17:54:23 2026</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -352,7 +352,7 @@ End time: Mon Mar 16 17:54:37 2026</code></pre>
 <li>Conduct a linear regression to test the association between SNP rs1861 and the phenotype. What is the p-value?</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1 <span class="dt">\</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">--extract</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt <span class="dt">\</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">--recode</span> A <span class="dt">\</span></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/geno.additive_A1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -361,19 +361,19 @@ End time: Mon Mar 16 17:54:37 2026</code></pre>
 (C) 2005-2026 Shaun Purcell, Christopher Chang    GNU General Public License v3
 Logging to C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/geno.additive_A1.log.
 Options in effect:
-  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc
+  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1
   --export A
   --extract C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/geno.additive_A1
 
-Start time: Mon Mar 16 17:54:37 2026
+Start time: Wed Mar 18 17:54:23 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.fam.
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.fam.
 101083 variants loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.bim.
-1 binary phenotype loaded (3134 cases, 866 controls).
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1.bim.
+1 quantitative phenotype loaded (4000 values).
 --extract: 4 variants remaining.
 4 variants remaining after main filters.
 
@@ -381,22 +381,22 @@ C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.bim.
 --export A:
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/geno.additive_A1.raw
 written.
-End time: Mon Mar 16 17:54:37 2026</code></pre>
+End time: Wed Mar 18 17:54:23 2026</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>geno_subset <span class="ot">=</span> <span class="fu">fread</span>(<span class="st">"C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/geno.additive_A1.raw"</span>)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>geno_subset <span class="ot">=</span> <span class="fu">na.omit</span>(geno_subset)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>geno_subset <span class="ot">=</span> <span class="fu">na.omit</span>(geno_subset, <span class="at">cols =</span> <span class="st">"rs1861_C"</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(geno_subset)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     FID    IID   PAT   MAT   SEX PHENOTYPE rs3813199_G rs11804831_T
-   &lt;int&gt; &lt;char&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;       &lt;int&gt;        &lt;int&gt;
-1:     1  A2002     0     0     1         2           2            2
-2:     2  A2003     0     0     1         2           2            1
-3:     3  A2004     0     0     1         1           2            2
-4:     4  A2005     0     0     1         2           2            1
-5:     6  A2007     0     0     1         2           2            2
-6:     7  A2008     0     0     1         2           2            2
+   &lt;int&gt; &lt;char&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;num&gt;       &lt;int&gt;        &lt;int&gt;
+1:     1  A2002     0     0     1   1.85385           2            2
+2:     2  A2003     0     0     1   2.08264           2            1
+3:     3  A2004     0     0     1   2.73871           2            2
+4:     4  A2005     0     0     1   1.34114           2            1
+5:     6  A2007     0     0     1   2.38297           2            2
+6:     7  A2008     0     0     1   1.51430           2            2
    rs3128342_C rs1861_C
          &lt;int&gt;    &lt;int&gt;
 1:           2        2
@@ -410,7 +410,7 @@ End time: Mon Mar 16 17:54:37 2026</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    0    1    2 
-  14  389 3459 </code></pre>
+  15  398 3551 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>AF[AF<span class="sc">$</span>ID<span class="sc">==</span><span class="st">'rs1861'</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -427,26 +427,26 @@ lm(formula = PHENOTYPE ~ rs1861_C, data = geno_subset)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--0.7828  0.2172  0.2172  0.2172  0.2281 
+-3.5439 -0.6850  0.0021  0.6993  3.3268 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 1.771864   0.039616  44.726   &lt;2e-16 ***
-rs1861_C    0.005483   0.020642   0.266    0.791    
+(Intercept)  0.05238    0.09486   0.552    0.581    
+rs1861_C     0.97382    0.04943  19.703   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.4128 on 3860 degrees of freedom
-Multiple R-squared:  1.828e-05, Adjusted R-squared:  -0.0002408 
-F-statistic: 0.07055 on 1 and 3860 DF,  p-value: 0.7906</code></pre>
+Residual standard error: 1.003 on 3962 degrees of freedom
+Multiple R-squared:  0.08924,   Adjusted R-squared:  0.08901 
+F-statistic: 388.2 on 1 and 3962 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#0.791</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&lt;2e-16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="2" type="i">
 <li>How would you interpret the beta coefficient from this regression?</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#With each allele containing the SNP, the occurrence of the phenotype is increased by 0.05483 (B1) units, as it is additive</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#With each allele containing the SNP, the occurrence of the phenotype is increased by 0.97382 (B1) units, as it is additive</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co">#B0 indicates the baseline expected phenotype, given that our SNP genotype is 0 (unaffected)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="3" type="i">
@@ -512,20 +512,20 @@ lm(formula = PHENOTYPE ~ rs1861_C, data = geno_subset_rec)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--0.7829  0.2171  0.2171  0.2171  0.2233 
+-3.5437 -0.6892  0.0015  0.7016  3.3270 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  1.77668    0.02056  86.396   &lt;2e-16 ***
-rs1861_C     0.00621    0.02173   0.286    0.775    
+(Intercept)  0.99231    0.04945   20.07   &lt;2e-16 ***
+rs1861_C     1.00754    0.05224   19.29   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.4128 on 3860 degrees of freedom
-Multiple R-squared:  2.116e-05, Adjusted R-squared:  -0.0002379 
-F-statistic: 0.08168 on 1 and 3860 DF,  p-value: 0.775</code></pre>
+Residual standard error: 1.005 on 3962 degrees of freedom
+Multiple R-squared:  0.08582,   Adjusted R-squared:  0.08559 
+F-statistic:   372 on 1 and 3962 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#0.775</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&lt;2e-16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="6" type="i">
 <li>Plot the scatterplot of phenotype versus the recessive-coded genotype of rs1861. Add the regression line to the plot.</li>
@@ -576,10 +576,10 @@ F-statistic: 0.08168 on 1 and 3860 DF,  p-value: 0.775</code></pre>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(AIC)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    df      AIC
-lm1  3 4130.279
-lm2  3 4130.268</code></pre>
+lm1  3 11276.91
+lm2  3 11291.74</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#AIC values of both models are very close to each other. While the recessive model would fit better, due to having a lower AIC, the difference is not significant.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#AIC values of both models are relatively close to each other, but the additive model would fit considerably better due to having a lower AIC (DAIC = 14.83).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="criteria" class="level3">

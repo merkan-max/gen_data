@@ -55,17 +55,17 @@ M = nrow(SNP); M
 (i) Load the genotype matrix for SNPs rs1861, rs3813199, rs3128342, and rs11804831 using additive coding. What are the allele frequencies (AFs) for these four SNPs?
 
 ```{bash}   
-plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc --export A --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1 --export A --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1
 ```
 ```{r}
 geno = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_additive_A1.raw")
 ```
 ```{bash}
 printf "%s\n" rs1861 rs3813199 rs3128342 rs11804831 > C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt
-plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc \
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1 \
        --freq \
        --extract C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt \
-       --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive
+       --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive 
 ```  
 ```{r}
 AF = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snp.additive.afreq")
@@ -85,7 +85,7 @@ head(AF$ALT_FREQS)
 (i) Conduct the Hardy–Weinberg Equilibrium (HWE) test for all SNPs in the .bim file. Then, load the file containing the HWE p-value results and display the first few rows of the resulting data frame.
 
 ```{bash}         
-plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc --hardy --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1 --hardy --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1
 ```
 ```{r}
 HWE = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_qc_hwe_A1.hardy")
@@ -104,14 +104,14 @@ four_pval = HWE[HWE$ID %in% four_SNP, c("ID", "P")]; four_pval
 (i) Conduct a linear regression to test the association between SNP rs1861 and the phenotype. What is the p-value?
 
 ```{bash}
-plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc \
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A1 \
       --extract C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/snplist_A1.txt \
       --recode A \
       --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/geno.additive_A1
 ```
 ```{r}
 geno_subset = fread("C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/geno.additive_A1.raw")
-geno_subset = na.omit(geno_subset)
+geno_subset = na.omit(geno_subset, cols = "rs1861_C")
 head(geno_subset)
 
 table(geno_subset$rs1861_C)
@@ -119,13 +119,13 @@ AF[AF$ID=='rs1861',]
 
 lm1 = lm(PHENOTYPE ~ rs1861_C, data = geno_subset)
 summary(lm1)
-#0.791
+#<2e-16
 ```
 
 (ii) How would you interpret the beta coefficient from this regression?
 
 ```{r}        
-#With each allele containing the SNP, the occurrence of the phenotype is increased by 0.05483 (B1) units, as it is additive
+#With each allele containing the SNP, the occurrence of the phenotype is increased by 0.97382 (B1) units, as it is additive
 #B0 indicates the baseline expected phenotype, given that our SNP genotype is 0 (unaffected)
 ```
 
@@ -177,7 +177,7 @@ geno_subset_rec[, 7:ncol(geno_subset_rec)] = as.data.frame(
 ```{r}        
 lm2 = lm(PHENOTYPE ~ rs1861_C, data = geno_subset_rec)
 summary(lm2)
-#0.775
+#<2e-16
 ```
 
 (vi) Plot the scatterplot of phenotype versus the recessive-coded genotype of rs1861. Add the regression line to the plot.
@@ -219,7 +219,7 @@ print(scatter_rec)
 ```{r}         
 AIC = AIC(lm1, lm2)
 print(AIC)
-#AIC values of both models are very close to each other. While the recessive model would fit better, due to having a lower AIC, the difference is not significant.
+#AIC values of both models are relatively close to each other, but the additive model would fit considerably better due to having a lower AIC (DAIC = 14.83).
 ```
 
 ### Criteria
