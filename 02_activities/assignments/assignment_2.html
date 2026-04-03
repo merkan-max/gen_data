@@ -248,7 +248,7 @@ Options in effect:
   --mind 0.10
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2
 
-Start time: Thu Apr 02 01:17:52 2026
+Start time: Fri Apr 03 15:24:11 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
@@ -276,7 +276,7 @@ C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2.bim
 Writing
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2.bed
 ... 0%21%43%65%87%done.
-End time: Thu Apr 02 01:17:53 2026</code></pre>
+End time: Fri Apr 03 15:24:12 2026</code></pre>
 </div>
 </div>
 </section>
@@ -287,57 +287,57 @@ End time: Thu Apr 02 01:17:53 2026</code></pre>
 <li>Perform LD pruning on <code>gwa.qc.A2</code> using PLINK2 with the following parameters: <code>--indep-pairwise 500 50 0.05</code>, and then generate a new dataset containing only the pruned SNPs.</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2 <span class="at">--indep-pairwise</span> 500 50 0.05 <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2 <span class="at">--indep-pairwise</span> 500 50 0.05 <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLINK v2.0.0-a.7 64-bit (10 Jan 2026)               cog-genomics.org/plink/2.0/
 (C) 2005-2026 Shaun Purcell, Christopher Chang    GNU General Public License v3
 Logging to C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.log.
 Options in effect:
-  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2
+  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2
   --indep-pairwise 500 50 0.05
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2
 
-Start time: Thu Apr 02 01:17:53 2026
+Start time: Fri Apr 03 15:24:12 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2.fam.
-306102 variants loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2.bim.
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2.fam.
+101083 variants loaded from
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2.bim.
 1 quantitative phenotype loaded (4000 values).
-Calculating allele frequencies... 0%21%42%64%85%done.
---indep-pairwise (7 compute threads): 0%50%281147/306102 variants removed.
+Calculating allele frequencies... 0%64%done.
+--indep-pairwise (7 compute threads): 0%50%79169/101083 variants removed.
 Writing...
 Variant lists written to
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.prune.in
 and
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.prune.out
 .
-End time: Thu Apr 02 01:17:54 2026</code></pre>
+End time: Fri Apr 03 15:24:13 2026</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2 <span class="at">--extract</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.prune.in <span class="at">--make-bed</span> <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2 <span class="at">--extract</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.prune.in <span class="at">--make-bed</span> <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLINK v2.0.0-a.7 64-bit (10 Jan 2026)               cog-genomics.org/plink/2.0/
 (C) 2005-2026 Shaun Purcell, Christopher Chang    GNU General Public License v3
 Logging to C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.log.
 Options in effect:
-  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2
+  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2
   --extract C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.prune.in
   --make-bed
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2
 
-Start time: Thu Apr 02 01:17:54 2026
+Start time: Fri Apr 03 15:24:13 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2.fam.
-306102 variants loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2.bim.
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2.fam.
+101083 variants loaded from
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2.bim.
 1 quantitative phenotype loaded (4000 values).
---extract: 24955 variants remaining.
-24955 variants remaining after main filters.
+--extract: 21914 variants remaining.
+21914 variants remaining after main filters.
 Writing
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.fam
 ... done.
@@ -346,8 +346,8 @@ C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2
 ... done.
 Writing
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.bed
-... 0%20%41%61%83%done.
-End time: Thu Apr 02 01:17:54 2026</code></pre>
+... 0%61%done.
+End time: Fri Apr 03 15:24:13 2026</code></pre>
 </div>
 </div>
 <ol start="2" type="i">
@@ -364,16 +364,16 @@ Options in effect:
   --king-cutoff 0.0884
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_king.A2
 
-Start time: Thu Apr 02 01:17:55 2026
+Start time: Fri Apr 03 15:24:14 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.fam.
-24955 variants loaded from
+21914 variants loaded from
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.bim.
 1 quantitative phenotype loaded (4000 values).
 --king-cutoff pass 1/1: Scanning for rare variants... 0%done.
-10 variants handled by initial scan (24945 remaining).
+0 variants handled by initial scan (21914 remaining).
 
 --king-cutoff pass 1/1: 0 variants complete.
 --king-cutoff pass 1/1: 1536 variants complete.
@@ -390,40 +390,38 @@ C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2
 --king-cutoff pass 1/1: 18432 variants complete.
 --king-cutoff pass 1/1: 19968 variants complete.
 --king-cutoff pass 1/1: 21504 variants complete.
---king-cutoff pass 1/1: 23040 variants complete.
---king-cutoff pass 1/1: 24576 variants complete.
 --king-cutoff pass 1/1: Condensing...                 done.
---king-cutoff: 24955 variants processed.
+--king-cutoff: 21914 variants processed.
 --king-cutoff: Excluded sample IDs written to
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_king.A2.king.cutoff.out.id
 , and 4000 remaining sample IDs written to
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_king.A2.king.cutoff.in.id
 .
-End time: Thu Apr 02 01:17:57 2026</code></pre>
+End time: Fri Apr 03 15:24:16 2026</code></pre>
 </div>
 </div>
 <ol start="3" type="i">
 <li>Using the unrelated individual list from part (ii), create a dataset containing only unrelated individuals and name it <code>gwa.qc_unrelated.A2</code>.</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2 <span class="at">--keep</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_king.A2.king.cutoff.in.id <span class="at">--make-bed</span> <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2 <span class="at">--keep</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_king.A2.king.cutoff.in.id <span class="at">--make-bed</span> <span class="at">--out</span> C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLINK v2.0.0-a.7 64-bit (10 Jan 2026)               cog-genomics.org/plink/2.0/
 (C) 2005-2026 Shaun Purcell, Christopher Chang    GNU General Public License v3
 Logging to C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2.log.
 Options in effect:
-  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2
+  --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2
   --keep C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_king.A2.king.cutoff.in.id
   --make-bed
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2
 
-Start time: Thu Apr 02 01:17:57 2026
+Start time: Fri Apr 03 15:24:16 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2.fam.
-306102 variants loaded from
-C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2.bim.
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2.fam.
+101083 variants loaded from
+C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2.bim.
 1 quantitative phenotype loaded (4000 values).
 --keep: 4000 samples remaining.
 4000 samples (2000 females, 2000 males; 4000 founders) remaining after main
@@ -437,8 +435,8 @@ C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated
 ... done.
 Writing
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2.bed
-... 0%21%42%64%85%done.
-End time: Thu Apr 02 01:17:59 2026</code></pre>
+... 0%64%done.
+End time: Fri Apr 03 15:24:17 2026</code></pre>
 </div>
 </div>
 </section>
@@ -460,16 +458,16 @@ Options in effect:
   --make-bed
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated_pruned.A2
 
-Start time: Thu Apr 02 01:18:00 2026
+Start time: Fri Apr 03 15:24:17 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2.fam.
-306102 variants loaded from
+101083 variants loaded from
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2.bim.
 1 quantitative phenotype loaded (4000 values).
---extract: 24955 variants remaining.
-24955 variants remaining after main filters.
+--extract: 21914 variants remaining.
+21914 variants remaining after main filters.
 Writing
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated_pruned.A2.fam
 ... done.
@@ -478,8 +476,8 @@ C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated
 ... done.
 Writing
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated_pruned.A2.bed
-... 0%20%41%61%83%done.
-End time: Thu Apr 02 01:18:00 2026</code></pre>
+... 0%61%done.
+End time: Fri Apr 03 15:24:17 2026</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -493,12 +491,12 @@ Options in effect:
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.unrelated_PCA.A2
   --pca 20
 
-Start time: Thu Apr 02 01:18:00 2026
+Start time: Fri Apr 03 15:24:17 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated_pruned.A2.fam.
-24955 variants loaded from
+21914 variants loaded from
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated_pruned.A2.bim.
 1 quantitative phenotype loaded (4000 values).
 Calculating allele frequencies... 0%done.
@@ -510,7 +508,7 @@ C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.unrelated_PC
 , and eigenvalues written to
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.unrelated_PCA.A2.eigenval
 .
-End time: Thu Apr 02 01:18:13 2026</code></pre>
+End time: Fri Apr 03 15:24:25 2026</code></pre>
 </div>
 </div>
 </section>
@@ -540,23 +538,23 @@ Options in effect:
   --glm
   --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_association.A2
 
-Start time: Thu Apr 02 01:18:13 2026
+Start time: Fri Apr 03 15:24:26 2026
 12130 MiB RAM detected; reserving 6065 MiB for main workspace.
 Using up to 8 compute threads.
 4000 samples (2000 females, 2000 males; 4000 founders) loaded from
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2.fam.
-306102 variants loaded from
+101083 variants loaded from
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2.bim.
 1 quantitative phenotype loaded (4000 values).
 3 covariates loaded from C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.unrelated_PCA.A2.eigenvec.
-Calculating allele frequencies... 0%21%42%64%85%done.
---glm linear regression on phenotype 'PHENO1': 0%21%42%64%85%done.
+Calculating allele frequencies... 0%64%done.
+--glm linear regression on phenotype 'PHENO1': 0%64%done.
 Results written to C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_association.A2.PHENO1.glm.linear .
---adjust: Genomic inflation est. lambda (based on median chisq) = 1.01843.
---adjust values (301051 tests) written to
+--adjust: Genomic inflation est. lambda (based on median chisq) = 1.01779.
+--adjust values (101083 tests) written to
 C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_association.A2.PHENO1.glm.linear.adjusted
 .
-End time: Thu Apr 02 01:18:20 2026</code></pre>
+End time: Fri Apr 03 15:24:29 2026</code></pre>
 </div>
 </div>
 <ol start="2" type="i">
@@ -569,28 +567,28 @@ End time: Thu Apr 02 01:18:20 2026</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>   #CHROM     POS        ID    REF    ALT PROVISIONAL_REF?     A1 OMITTED
     &lt;int&gt;   &lt;int&gt;    &lt;char&gt; &lt;char&gt; &lt;char&gt;           &lt;char&gt; &lt;char&gt;  &lt;char&gt;
-1:      1  995669 rs3934834      C      T                Y      T       C
-2:      1  995669 rs3934834      C      T                Y      T       C
-3:      1  995669 rs3934834      C      T                Y      T       C
-4:      1  995669 rs3934834      C      T                Y      T       C
-5:      1 1011278 rs3737728      G      A                Y      A       G
-6:      1 1011278 rs3737728      G      A                Y      A       G
-     A1_FREQ   TEST OBS_CT        BETA        SE        L95       U95
-       &lt;num&gt; &lt;char&gt;  &lt;int&gt;       &lt;num&gt;     &lt;num&gt;      &lt;num&gt;     &lt;num&gt;
-1: 0.0996595    ADD   3818 -0.00738657 0.0376168 -0.0811142 0.0663410
-2: 0.0996595    PC1   3818 -0.03187530 1.0158100 -2.0228200 1.9590700
-3: 0.0996595    PC2   3818 -0.03108280 1.0202600 -2.0307500 1.9685800
-4: 0.0996595    PC3   3818 -0.01980280 1.0232800 -2.0254000 1.9858000
-5: 0.3386490    ADD   3982  0.01820080 0.0240687 -0.0289730 0.0653747
-6: 0.3386490    PC1   3982  0.18723100 1.0033400 -1.7792800 2.1537400
-       T_STAT        P ERRCODE
-        &lt;num&gt;    &lt;num&gt;  &lt;char&gt;
-1: -0.1963640 0.844336       .
-2: -0.0313794 0.974969       .
-3: -0.0304657 0.975697       .
-4: -0.0193522 0.984561       .
-5:  0.7562030 0.449572       .
-6:  0.1866080 0.851978       .</code></pre>
+1:      1 1011278 rs3737728      G      A                Y      A       G
+2:      1 1011278 rs3737728      G      A                Y      A       G
+3:      1 1011278 rs3737728      G      A                Y      A       G
+4:      1 1011278 rs3737728      G      A                Y      A       G
+5:      1 1109721 rs1320565      C      T                Y      T       C
+6:      1 1109721 rs1320565      C      T                Y      T       C
+     A1_FREQ   TEST OBS_CT       BETA        SE        L95       U95    T_STAT
+       &lt;num&gt; &lt;char&gt;  &lt;int&gt;      &lt;num&gt;     &lt;num&gt;      &lt;num&gt;     &lt;num&gt;     &lt;num&gt;
+1: 0.3386490    ADD   3982  0.0182086 0.0240795 -0.0289864 0.0654035  0.756187
+2: 0.3386490    PC1   3982 -0.3779240 1.0015500 -2.3409200 1.5850800 -0.377340
+3: 0.3386490    PC2   3982  0.9818050 1.0015100 -0.9811150 2.9447300  0.980326
+4: 0.3386490    PC3   3982  0.4832040 1.0015300 -1.4797500 2.4461600  0.482467
+5: 0.0788481    ADD   3976 -0.0153297 0.0420641 -0.0977739 0.0671145 -0.364436
+6: 0.0788481    PC1   3976 -0.4762890 1.0037500 -2.4436000 1.4910200 -0.474511
+          P ERRCODE
+      &lt;num&gt;  &lt;char&gt;
+1: 0.449582       .
+2: 0.705941       .
+3: 0.326985       .
+4: 0.629501       .
+5: 0.715552       .
+6: 0.635162       .</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>association_additive <span class="ot">=</span> association[TEST <span class="sc">==</span> <span class="st">"ADD"</span>]</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>association_additive <span class="ot">=</span> association_additive[association_additive<span class="sc">$</span>P <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(association_additive<span class="sc">$</span>P), ] <span class="co">#Had to remove 0 or NA values, as the plot could not render due to "needing fintie ylim", source is https://stackoverflow.com/questions/73683696/error-in-making-a-manhattan-plot-need-finite-ylim-values</span></span>

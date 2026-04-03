@@ -67,10 +67,10 @@ In this question, you will use **PLINK2’s built-in KING-robust kinship** (`--k
 i)  Perform LD pruning on `gwa.qc.A2` using PLINK2 with the following parameters: `--indep-pairwise 500 50 0.05`, and then generate a new dataset containing only the pruned SNPs.
 
 ```{bash}
-plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2 --indep-pairwise 500 50 0.05 --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2 --indep-pairwise 500 50 0.05 --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2
 ```
 ```{bash}
-plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2 --extract C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.prune.in --make-bed --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2 --extract C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2.prune.in --make-bed --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_pruned.A2
 ```
 
 (ii) Use PLINK2 on the LD-pruned dataset to identify a set of unrelated individuals up to (approximately) 2nd-degree relatives (use a kinship cutoff of 0.0884).
@@ -82,7 +82,7 @@ plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/g
 (iii) Using the unrelated individual list from part (ii), create a dataset containing only unrelated individuals and name it `gwa.qc_unrelated.A2`.
 
 ```{bash}
-plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.A2 --keep C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_king.A2.king.cutoff.in.id --make-bed --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2
+plink2 --bfile C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc.A2 --keep C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa_king.A2.king.cutoff.in.id --make-bed --out C:/Users/Melis/OneDrive/Desktop/DSI/gen_data/02_activities/data/gwa.qc_unrelated.A2
 ```
 
 #### Question 4: principal component analysis (PCA)
